@@ -24,7 +24,7 @@ public class Cafeteria {
     private static final EntityManagerFactory emf;
 
     static {
-        emf = Persistence.createEntityManagerFactory("crudosos.odb");
+        emf = Persistence.createEntityManagerFactory("crudodb.odb");
     }
 
     public void crearPedidos(Pedidos p) {
@@ -60,8 +60,10 @@ public class Cafeteria {
 
     public void listar_pedidos_hoy() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Pedidos> q = em.createQuery("SELECT p FROM Pedidos p WHERE fecha= :p AND estado = 'NO DISPONIBLE'", Pedidos.class);
+        TypedQuery<Pedidos> q = em.createQuery("SELECT p FROM Pedidos p WHERE fecha= :p AND estado = :q", Pedidos.class);
+        String qq = "PENDIENTE";
         q.setParameter("p", sqlDate);
+        q.setParameter("q",qq);
         var pedidos = new ArrayList<Pedidos>();
         pedidos = (ArrayList<Pedidos>) q.getResultList();
         em.close();

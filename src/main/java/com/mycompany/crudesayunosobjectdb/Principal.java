@@ -29,6 +29,7 @@ public class Principal {
         System.out.println("\n¿QUE DESEA HACER?");
         
         var cafeteria = new Cafeteria();
+        cafeteria.meterProductos();
         int opcion = 0;
         
         while (opcion != 5) {
@@ -46,7 +47,6 @@ public class Principal {
                     introducidos por teclado. 
                      */
                     System.out.println("CARTA: \n\n");
-                    cafeteria.meterProductos();
                     cafeteria.listar_productos();
 
                     System.out.println("\nINTRODUZCA EL NOMBRE DEL ALUMNO");
